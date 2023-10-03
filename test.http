@@ -1,0 +1,22 @@
+###
+GET http://localhost:8081/simple-greet
+
+###
+
+GET http://localhost:8081/pokemon
+
+###
+
+GET http://localhost:8081/pokemon/1
+
+###
+GET http://localhost:8081/type
+
+###
+
+POST http://localhost:8081/pokemon
+Content-Type: application/json
+
+{"id":100, "type":1, "name":"Test"}
+
+###
