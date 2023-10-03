@@ -1,3 +1,6 @@
+# generated ddl
+generated-create.sql
+
 ignoreme*
 .attach*
 /bin
