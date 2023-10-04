@@ -1,6 +1,30 @@
 # simplejpa
 
-Helidon MP application that uses the dbclient API with an in-memory H2 database.
+Helidon MP application that uses the dbclient API with an oracle database.
+
+## Setting up db
+
+- Start your local oracle db with `docker-compose up -d`
+- connect using Sql Developer: connect as username: sys, password: password, role: sysdba, sid: ORCLCDB
+- in Sql Developer, run the following to create `pokemon` user:
+```sql
+alter session set "_ORACLE_SCRIPT"=true;
+CREATE USER fhir IDENTIFIED BY password;
+GRANT CONNECT, RESOURCE, DBA TO fhir;
+-- for now all privilages
+GRANT ALL PRIVILEGES TO fhir;
+```
+- to connect as `pokemon` with sql developer, use `default` as role, username: pokemon, password: password
+
+
+## Issues
+
+#### TODO: docker-compose should create the user on docker startup.
+
+#### `mvn package` failure
+
+unfortunately `mvn compile` overwrites the files copied in the `mvn process-resources` phase. So to build do: `mvn clean compile package` so that the second `compile` in package will not do anything, and items in META-INF will stay intact.
+
 
 ## Build and run
 

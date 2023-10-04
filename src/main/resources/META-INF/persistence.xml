@@ -26,7 +26,6 @@
         <class>com.example.simplejpa.Pokemon</class>
         <class>com.example.simplejpa.PokemonType</class>
         <properties>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
             <property name="jakarta.persistence.sql-load-script-source" value="META-INF/init_script.sql"/>
             <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="jakarta.persistence.schema-generation.create-source" value="metadata" />

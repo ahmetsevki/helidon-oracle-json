@@ -1,0 +1,40 @@
+# runs under colima, I can connect from outside (using sys/password)
+# both with oracle sql studio and "sqlplus sys/password@//0.0.0.0:1521/ORCLCDB as sysdba"
+# runs also on rancherdesktop but I can only connect from inside
+# from: https://collabnix.com/how-to-run-oracle-database-in-a-docker-container-using-docker-compose/
+# colima: (I am not sure if these were material) after following fixes in https://github.com/rancher-sandbox/rancher-desktop/issues/1209#issuecomment-1467215362
+# if you want to  mount to folders, https://stackoverflow.com/questions/40905761/how-do-i-mount-a-host-directory-as-a-volume-in-docker-compose
+# login with: "docker exec -it oracle /bin/bash", then "sqlplus sys/password as sysdba" 
+# external connection:
+# connect as username: sys, password: password, role: sysdba, sid: ORCLCDB
+version: '3.1'
+services:
+  oracle-db:
+    privileged: true
+    container_name: oracle
+    image: container-registry.oracle.com/database/enterprise:latest
+    environment:
+    
+      - ORACLE_SID=ORCLCDB
+      - ORACLE_PDB=ORCLPDB1
+      - ORACLE_PWD=password
+    ports:
+      - 1521:1521
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+      - oracle-backup:/opt/oracle/backup
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "sqlplus",
+          "-L",
+          "sys/password@//localhost:1521/ORCLCDB as sysdba",
+          "@healthcheck.sql"
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+volumes:
+  oracle-data:
+  oracle-backup:
