@@ -1,6 +1,10 @@
 
 package com.example.simplejpa;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+
+import io.hypersistence.utils.hibernate.type.json.JsonStringType;
+import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.Access;
 import jakarta.persistence.AccessType;
 import jakarta.persistence.Basic;
@@ -35,6 +39,8 @@ public class Pokemon {
     private PokemonType pokemonType;
 
     private int type;
+
+    private PokemonProperties properties;
 
     public Pokemon() {
     }
@@ -77,4 +83,15 @@ public class Pokemon {
     public void setType(int type) {
         this.type = type;
     }
+
+    @Type(JsonType.class)
+    @Column(columnDefinition = "JSON")
+    public PokemonProperties getProperties() {
+        return properties;
+    }
+
+    public void setProperties(PokemonProperties properties) {
+        this.properties = properties;
+    }
+
 }

@@ -24,6 +24,26 @@ GET http://localhost:8081/type
 POST http://localhost:8081/pokemon
 Content-Type: application/json
 
-{"id":100, "type":1, "name":"Test"}
+{"id":103, "type":1, "name":"Test", "properties":{
+    "color":"black",
+    "speed":22
+}}
 
 ###
+
+POST http://localhost:8081/pokemon
+Content-Type: application/json
+
+{"id":100, "type":1, "name":"StringPokemon", "properties":"{\"color\":\"black\"}"}
+
+###
+
+POST http://localhost:8081/pokemon
+Content-Type: application/json
+
+{"id":101, "type":1, "name":"StringPokemon", "properties":{
+    "color":"black"
+}}
+
+###
+GET http://localhost:8081/pokemon/101
