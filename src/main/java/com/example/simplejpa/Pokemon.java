@@ -3,7 +3,6 @@ package com.example.simplejpa;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
-import io.hypersistence.utils.hibernate.type.json.JsonStringType;
 import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.Access;
 import jakarta.persistence.AccessType;
@@ -40,7 +39,7 @@ public class Pokemon {
 
     private int type;
 
-    private PokemonProperties properties;
+    private String properties;
 
     public Pokemon() {
     }
@@ -86,11 +85,11 @@ public class Pokemon {
 
     @Type(JsonType.class)
     @Column(columnDefinition = "JSON")
-    public PokemonProperties getProperties() {
+    public String getProperties() {
         return properties;
     }
 
-    public void setProperties(PokemonProperties properties) {
+    public void setProperties(String properties) {
         this.properties = properties;
     }
 
