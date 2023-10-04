@@ -33,6 +33,10 @@ We are using google style. In VSCode add this to your `settings.json` file:
     "java.format.settings.profile": "GoogleStyle",
 ```
 
+## Development and Debugging
+
+Once you install `helidon` cli, you can use it to run a dev loop:
+`helidon dev`, or to run with a debug socket `helidon dev --app-debug`
 ## Build and run
 
 
@@ -179,4 +183,3 @@ mvn package -Pjlink-image -Djlink.image.addClassDataSharingArchive=false
 ```
 
 For more information on available configuration options see the helidon-maven-plugin documentation.
-                                
