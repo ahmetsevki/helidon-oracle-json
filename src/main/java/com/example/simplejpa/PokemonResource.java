@@ -18,6 +18,9 @@ import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * This class implements REST endpoints to interact with Pokemons. The following
  * operations are supported:
@@ -34,6 +37,8 @@ import java.util.List;
  */
 @Path("pokemon")
 public class PokemonResource {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(PokemonResource.class);
 
     @PersistenceContext(unitName = "my_persistent_unit")
     private EntityManager entityManager;
@@ -80,6 +85,7 @@ public class PokemonResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional(Transactional.TxType.REQUIRED)
     public void createPokemon(Pokemon pokemon) {
+        LOGGER.info("createPokemon");
         try {
             PokemonType pokemonType = entityManager.createNamedQuery("getPokemonTypeById", PokemonType.class)
                     .setParameter("id", pokemon.getType()).getSingleResult();
