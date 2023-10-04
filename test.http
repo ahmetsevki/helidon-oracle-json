@@ -36,8 +36,14 @@ Content-Type: application/json
 
 {"id":100, "type":1, "name":"StringPokemon", "properties":"{\"color\":\"black\"}"}
 
-###
+### try to store bad json
 
+POST http://localhost:8081/pokemon
+Content-Type: application/json
+
+{"id":100, "type":1, "name":"StringPokemon", "properties":"{\"color\":\"black"}
+
+###
 POST http://localhost:8081/pokemon
 Content-Type: application/json
 
