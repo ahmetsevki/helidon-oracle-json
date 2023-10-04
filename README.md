@@ -25,6 +25,13 @@ GRANT ALL PRIVILEGES TO fhir;
 
 unfortunately `mvn compile` overwrites the files copied in the `mvn process-resources` phase. So to build do: `mvn clean compile package` so that the second `compile` in package will not do anything, and items in META-INF will stay intact.
 
+## Code Style
+
+We are using google style. In VSCode add this to your `settings.json` file:
+```json
+    "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+    "java.format.settings.profile": "GoogleStyle",
+```
 
 ## Build and run
 

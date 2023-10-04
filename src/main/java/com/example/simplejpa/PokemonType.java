@@ -20,10 +20,8 @@ import jakarta.persistence.Table;
 @Table(name = "POKEMONTYPE")
 @Access(AccessType.FIELD)
 @NamedQueries({
-        @NamedQuery(name = "getPokemonTypes",
-                    query = "SELECT t FROM PokemonType t"),
-        @NamedQuery(name = "getPokemonTypeById",
-                    query = "SELECT t FROM PokemonType t WHERE t.id = :id")
+        @NamedQuery(name = "getPokemonTypes", query = "SELECT t FROM PokemonType t"),
+        @NamedQuery(name = "getPokemonTypeById", query = "SELECT t FROM PokemonType t WHERE t.id = :id")
 })
 public class PokemonType {
 

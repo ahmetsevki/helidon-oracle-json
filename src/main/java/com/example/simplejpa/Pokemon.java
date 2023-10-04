@@ -1,7 +1,6 @@
 
 package com.example.simplejpa;
 
-
 import jakarta.persistence.Access;
 import jakarta.persistence.AccessType;
 import jakarta.persistence.Basic;
@@ -24,10 +23,8 @@ import jakarta.persistence.Transient;
 @Table(name = "POKEMON")
 @Access(AccessType.PROPERTY)
 @NamedQueries({
-        @NamedQuery(name = "getPokemons",
-                    query = "SELECT p FROM Pokemon p"),
-        @NamedQuery(name = "getPokemonByName",
-                    query = "SELECT p FROM Pokemon p WHERE p.name = :name")
+        @NamedQuery(name = "getPokemons", query = "SELECT p FROM Pokemon p"),
+        @NamedQuery(name = "getPokemonByName", query = "SELECT p FROM Pokemon p WHERE p.name = :name")
 })
 public class Pokemon {
 
@@ -61,7 +58,6 @@ public class Pokemon {
     public void setName(String name) {
         this.name = name;
     }
-
 
     @ManyToOne
     public PokemonType getPokemonType() {
