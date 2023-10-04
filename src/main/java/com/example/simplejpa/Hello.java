@@ -3,8 +3,8 @@ package com.example.simplejpa;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class Ahmet {
-    public String hello(){
-        return "Hello World!";
+public class Hello {
+    public String hello() {
+        return "Hello From Injected object!";
     }
 }

@@ -40,7 +40,7 @@ public class SimpleGreetResource {
     }
 
     @Inject
-    public Ahmet ahmet;
+    public Hello injectedHello;
 
     /**
      * Return a worldly greeting message.
@@ -50,10 +50,20 @@ public class SimpleGreetResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Message getDefaultMessage() {
-        String msg = String.format("%s %s!", message, "World");
+        String msg = String.format("%s %s!", message, "Universe");
         Message message = new Message();
-        message.setMessage(ahmet.hello());
+        message.setMessage(msg);
         return message;
+    }
+
+    @Path("/hello")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Message getInjectedHelloMessage(@PathParam("name") String name) {
+        Message message = new Message();
+        message.setMessage(injectedHello.hello());
+        return message;
+
     }
 
     @Path("/{name}")

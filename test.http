@@ -1,6 +1,13 @@
 ###
 GET http://localhost:8081/simple-greet
 
+
+###
+GET http://localhost:8081/simple-greet/hello
+
+###
+GET http://localhost:8081/simple-greet/ahmet
+
 ###
 
 GET http://localhost:8081/pokemon
